@@ -3,29 +3,30 @@ version: "3.8"
 services:
   frontend:
     build:
-      context: ./apps/frontend
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - ./apps/frontend/src:/app/src
+      - ./frontend/src:/app/src
+      - ./frontend/next.config.js:/app/next.config.js
     environment:
       - NODE_ENV=development
 
   cms:
     build:
-      context: ./apps/cms
+      context: ./cms
       dockerfile: Dockerfile
     ports:
       - "3001:3000"
     volumes:
-      - ./apps/cms/src:/app/src
+      - ./cms/src:/app/src
     environment:
       - NODE_ENV=development
 
   backend:
     build:
-      context: ./apps/backend
+      context: ./backend
       dockerfile: Dockerfile
     ports:
       - "4000:4000"

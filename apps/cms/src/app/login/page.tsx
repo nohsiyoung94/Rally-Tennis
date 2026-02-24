@@ -12,73 +12,62 @@ export default function LoginPage() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        backgroundColor: "#f1f5f9",
-      }}
-    >
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          backgroundColor: "#fff",
-          padding: "3rem",
-          borderRadius: 12,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-          width: 360,
-        }}
-      >
-        <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>관리자 로그인</h1>
-        <label style={{ display: "block", marginBottom: "1rem" }}>
-          이메일
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={inputStyle}
-          />
-        </label>
-        <label style={{ display: "block", marginBottom: "1.5rem" }}>
-          비밀번호
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={inputStyle}
-          />
-        </label>
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "0.75rem",
-            backgroundColor: "#1e293b",
-            color: "#fff",
-            border: "none",
-            borderRadius: 8,
-            fontSize: "1rem",
-            cursor: "pointer",
-          }}
+    <div className="flex items-center justify-center min-h-screen bg-content-bg">
+      <div className="w-full max-w-sm mx-4">
+        {/* Logo */}
+        <div className="text-center mb-8">
+          <span className="text-4xl">🎾</span>
+          <h1 className="text-2xl font-bold text-text-primary mt-3">랠리테니스 CMS</h1>
+          <p className="text-sm text-text-muted mt-1">관리자 계정으로 로그인하세요</p>
+        </div>
+
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-8 rounded-2xl shadow-lg border border-border"
         >
-          로그인
-        </button>
-      </form>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-1.5">
+              이메일
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="admin@rallytennis.kr"
+              className="w-full px-3 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="password" className="block text-sm font-medium text-text-primary mb-1.5">
+              비밀번호
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="비밀번호를 입력하세요"
+              className="w-full px-3 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-2.5 bg-sidebar text-white rounded-lg font-medium hover:bg-sidebar-hover transition-colors cursor-pointer"
+          >
+            로그인
+          </button>
+        </form>
+
+        <p className="text-center text-xs text-text-muted mt-6">
+          © 2026 랠리테니스 아카데미
+        </p>
+      </div>
     </div>
   );
 }
-
-const inputStyle: React.CSSProperties = {
-  display: "block",
-  width: "100%",
-  padding: "0.5rem",
-  marginTop: "0.25rem",
-  border: "1px solid #ccc",
-  borderRadius: 6,
-  fontSize: "1rem",
-  boxSizing: "border-box",
-};

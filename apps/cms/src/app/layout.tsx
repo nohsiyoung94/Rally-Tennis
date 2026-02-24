@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "랠리테니스 CMS",
@@ -12,7 +13,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body style={{ margin: 0, fontFamily: "'Noto Sans KR', sans-serif" }}>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="m-0 font-sans text-text-primary bg-content-bg">
         {children}
       </body>
     </html>

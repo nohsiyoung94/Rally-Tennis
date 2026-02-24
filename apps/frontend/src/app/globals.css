@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1b4332;
+  --color-primary-light: #2d6a4f;
+  --color-primary-lighter: #40916c;
+  --color-primary-bg: #f0f7f4;
+  --color-primary-bg2: #d8e8e0;
+  --color-accent: #c9a84c;
+  --color-accent-light: #d4b85c;
+  --color-accent-dark: #b8963a;
+  --font-family-sans: 'Noto Sans KR', sans-serif;
+  --font-family-serif: 'Playfair Display', serif;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll-triggered fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Staggered animation delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Section fade-in (initially hidden, JS triggers) */
+.section-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold underline hover effect for nav links */
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Hero parallax subtle */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(27,67,50,0.95) 0%, rgba(45,106,79,0.9) 50%, rgba(64,145,108,0.85) 100%);
+}
