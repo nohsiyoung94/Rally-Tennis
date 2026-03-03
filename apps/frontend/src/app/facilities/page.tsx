@@ -9,7 +9,7 @@ const courts: CourtWithStatus[] = [
 
 const amenities: Amenity[] = [
   { name: "샤워실 & 탈의실", desc: "남녀 분리 샤워실과 넓은 탈의실" },
-  { name: "휴게 라운지", desc: "음료 자판기와 편안한 휴식 공간" },
+  { name: "휴게 라운지", desc: "편안한 휴식 공간" },
   { name: "주차장", desc: "1층, 수강생 2시간 무료" },
 ];
 
