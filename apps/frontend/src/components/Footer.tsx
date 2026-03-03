@@ -25,7 +25,8 @@ export default function Footer() {
             className="object-contain h-auto w-[70px] sm:w-[100px]"
           />
           <p className="text-[10px] sm:text-xs text-gray-500 leading-4">
-            프리미엄 테니스 아카데미
+            프리미엄 테니스 아카데미<br />
+            체계적인 레슨과 최고의 시설
           </p>
         </div>
 
