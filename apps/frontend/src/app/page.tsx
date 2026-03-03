@@ -92,7 +92,7 @@ export default function HomePage() {
   return (
     <div>
       {/* ═══ HERO ═══ */}
-      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden -mt-30">
+      <section className="relative min-h-screen min-h-[100dvh] flex items-center justify-center bg-white overflow-hidden -mt-30">
         {/* Background tennis court image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -115,16 +115,16 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/lessons"
               className="bg-accent text-primary px-10 py-4 text-sm font-bold tracking-wider uppercase hover:bg-accent-light transition-colors"
             >
-              상담 문의하기
+              프로그램 보기
             </Link>
             <Link
-              href="/lessons"
+              href="/contact"
               className="border border-primary/30 text-primary px-10 py-4 text-sm font-medium tracking-wider uppercase hover:border-accent-dark hover:text-accent-dark transition-colors"
             >
-              프로그램 보기
+              상담 문의하기
             </Link>
           </div>
         </div>
@@ -177,9 +177,84 @@ export default function HomePage() {
       </section>
 
 
+      {/* ═══ PROGRAMS PREVIEW ═══ */}
+      <section id="programs" className="py-24 px-6 bg-primary-bg">
+        <div ref={(el) => addRef(el, 2)} className="section-hidden max-w-[1000px] mx-auto">
+          <SectionTitle eng="Programs" kor="레슨 프로그램" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl p-8 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-accent text-2xl font-bold">1:1</span>
+              </div>
+              <h3 className="text-lg font-bold text-primary mb-2">개인 레슨</h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                1:1 맞춤 지도로<br />빠른 실력 향상
+              </p>
+              <p className="text-accent font-bold text-lg">월 200,000원~</p>
+            </div>
+            <div className="bg-white rounded-xl p-8 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-accent text-2xl font-bold">2:1</span>
+              </div>
+              <h3 className="text-lg font-bold text-primary mb-2">듀오 레슨</h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                함께 배우며<br />즐거운 테니스
+              </p>
+              <p className="text-accent font-bold text-lg">월 140,000원~</p>
+            </div>
+            <div className="bg-white rounded-xl p-8 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-accent text-2xl font-bold">3:1</span>
+              </div>
+              <h3 className="text-lg font-bold text-primary mb-2">그룹 레슨</h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                합리적인 가격의<br />소그룹 레슨
+              </p>
+              <p className="text-accent font-bold text-lg">월 120,000원~</p>
+            </div>
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/lessons"
+              className="inline-block border-2 border-primary text-primary px-8 py-3 text-sm font-bold tracking-wider uppercase hover:bg-primary hover:text-white transition-colors rounded-sm"
+            >
+              전체 프로그램 보기
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ LOCATION ═══ */}
+      <section id="location" className="py-24 px-6 bg-white">
+        <div ref={(el) => addRef(el, 5)} className="section-hidden max-w-[1000px] mx-auto">
+          <SectionTitle eng="Location" kor="오시는 길" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <KakaoMap className="w-full h-80" />
+
+            {/* Info */}
+            <div className="flex flex-col justify-center gap-6">
+              <div>
+                <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">주소</p>
+                <p className="text-gray-800 font-medium">경기도 용인시 수지구 고기로 163, </p>
+                <p className="text-gray-500 text-sm">2층(동천동, 헤이젠빌딩)</p>
+              </div>
+              <div>
+                <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">대중 교통</p>
+                <p className="text-gray-600 text-sm">동천초등학교 도보 10분/n14번 14-번 이우중고등학교/주성카센터 하차</p>
+              </div>
+              <div>
+                <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">주차</p>
+                <p className="text-gray-600 text-sm">건물 1층 / 수강생 2시간 무료</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ CONTACT CTA ═══ */}
       <section id="contact" className="py-24 px-6 bg-white">
-        <div ref={(el) => addRef(el, 4)} className="section-hidden max-w-[800px] mx-auto text-center">
+        <div ref={(el) => addRef(el, 6)} className="section-hidden max-w-[800px] mx-auto text-center">
           <SectionTitle eng="Contact" kor="상담 문의" />
           <p className="text-gray-600 leading-8 mb-10 -mt-6">
             레슨 상담 및 시설 이용 문의는 전화로 연락 주세요.<br />
@@ -220,38 +295,6 @@ export default function HomePage() {
             <p className="text-gray-700 text-sm">
               평일 06:30 - 22:00 | 주말 08:00 - 18:00 | 공휴일 별도 안내
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ LOCATION ═══ */}
-      <section id="location" className="py-24 px-6 bg-primary-bg">
-        <div ref={(el) => addRef(el, 5)} className="section-hidden max-w-[1000px] mx-auto">
-          <SectionTitle eng="Location" kor="오시는 길" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <KakaoMap className="w-full h-80" />
-
-            {/* Info */}
-            <div className="flex flex-col justify-center gap-6">
-              <div>
-                <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">Address</p>
-                <p className="text-gray-800 font-medium">경기도 용인시 수지구 고기로 163, </p>
-                <p className="text-gray-500 text-sm">2층(동천동, 헤이젠빌딩)</p>
-              </div>
-              <div>
-                <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">Subway</p>
-                <p className="text-gray-600 text-sm">동천초등학교 도보 10분</p>
-              </div>
-              <div>
-                <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">Bus</p>
-                <p className="text-gray-600 text-sm">14번 14-번 이우중고등학교/주성카센터 하차</p>
-              </div>
-              <div>
-                <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">Parking</p>
-                <p className="text-gray-600 text-sm">건물 1층 / 수강생 2시간 무료</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
