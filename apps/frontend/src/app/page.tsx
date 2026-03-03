@@ -241,7 +241,7 @@ export default function HomePage() {
               </div>
               <div>
                 <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">대중 교통</p>
-                <p className="text-gray-600 text-sm">동천초등학교 도보 10분/n14번 14-번 이우중고등학교/주성카센터 하차</p>
+                <p className="text-gray-600 text-sm">동천초등학교 도보 10분<br />14번 14-번 이우중고등학교/주성카센터 하차</p>
               </div>
               <div>
                 <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">주차</p>
