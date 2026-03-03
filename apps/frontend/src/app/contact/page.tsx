@@ -80,7 +80,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="font-semibold text-primary text-sm mb-2">주소</h3>
-              <p className="text-gray-600 text-sm">경기도 용인시 수지구 고기로 163,2층/n(동천동, 헤이젠빌딩)</p>
+              <p className="text-gray-600 text-sm">경기도 용인시 수지구 고기로 163,2층<br />(동천동, 헤이젠빌딩)</p>
             </div>
           </div>
         </div>
