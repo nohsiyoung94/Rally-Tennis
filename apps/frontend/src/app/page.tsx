@@ -293,7 +293,7 @@ export default function HomePage() {
           <div className="inline-block bg-primary-bg rounded-lg px-8 py-5">
             <p className="text-gray-500 text-sm mb-1">상담 가능 시간</p>
             <p className="text-gray-700 text-sm">
-              평일 06:30 - 22:00 | 주말 08:00 - 18:00 | 공휴일 별도 안내
+              평일 06:30 - 22:00 | 주말 08:00 - 18:00  |  공휴일 별도 안내
             </p>
           </div>
         </div>
