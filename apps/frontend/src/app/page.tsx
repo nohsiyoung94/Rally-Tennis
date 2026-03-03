@@ -154,16 +154,16 @@ export default function HomePage() {
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-accent">2</div>
-                  <div className="text-gray-500 text-sm mt-1">실내 코트</div>
+                  <div className="text-3xl font-bold text-accent">실내 코트</div>
+                  <div className="text-gray-500 text-sm mt-1">2</div>
                 </div>
                 <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-accent">1</div>
-                  <div className="text-gray-500 text-sm mt-1">야외 코트</div>
+                  <div className="text-3xl font-bold text-accent">야외 코트</div>
+                  <div className="text-gray-500 text-sm mt-1">1</div>
                 </div>
                 <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-accent">2</div>
-                  <div className="text-gray-500 text-sm mt-1">전문 코치진</div>
+                  <div className="text-3xl font-bold text-accent">전문 코치진</div>
+                  <div className="text-gray-500 text-sm mt-1">2</div>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-3xl font-bold text-accent">볼머신</div>
