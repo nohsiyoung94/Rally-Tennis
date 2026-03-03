@@ -3,15 +3,18 @@ FROM node:20-alpine AS base
 # --- Dependencies ---
 FROM base AS deps
 WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm ci
+COPY package.json package-lock.json ./
+COPY frontend/package.json ./frontend/
+RUN npm ci --workspace=frontend
 
 # --- Build ---
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN npm run build
+COPY --from=deps /app/frontend/node_modules ./frontend/node_modules
+COPY package.json ./
+COPY frontend/ ./frontend/
+RUN npm run build --workspace=frontend
 
 # --- Production ---
 FROM base AS runner
@@ -21,9 +24,9 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/frontend/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/frontend/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/frontend/.next/static ./.next/static
 
 USER nextjs
 

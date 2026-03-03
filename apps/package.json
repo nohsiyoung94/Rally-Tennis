@@ -3,13 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "apps/*"
+    "frontend"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=apps/frontend",
-    "dev:cms": "npm run dev --workspace=apps/cms",
-    "dev:all": "npm run dev --workspace=apps/frontend & npm run dev --workspace=cms",
-    "build": "npm run build --workspace=apps/frontend",
-    "build:cms": "npm run build --workspace=apps/cms"
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend"
   }
 }

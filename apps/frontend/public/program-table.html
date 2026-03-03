@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>랠리테니스 프로그램 가격표</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f7f4; display: flex; justify-content: center; padding: 40px 20px; font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; }
+
+  .container {
+    position: relative;
+    background: #fff;
+    border: 12px solid #f0f7f4;
+    border-radius: 16px;
+    padding: 48px;
+    width: 850px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  /* Watermark */
+  .watermark {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  /* Header */
+  .header {
+    position: relative; z-index: 1;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    border-bottom: 2px solid #1b4332;
+    padding-bottom: 12px; margin-bottom: 12px;
+  }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .header-logo { height: 133px; width: auto; }
+  .header-title { font-size: 28px; font-weight: 900; color: #1b4332; letter-spacing: -0.5px; }
+  .header-sub { color: #db2777; font-weight: 600; letter-spacing: 3px; font-size: 14px; }
+  .header-vat { font-size: 13px; color: #888; font-weight: 500; }
+
+  /* Sections */
+  .content { position: relative; z-index: 1; }
+  section { margin-bottom: 12px; }
+  section:last-child { margin-bottom: 0; }
+
+  h3 {
+    font-size: 18px; font-weight: 700; color: #333;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 10px;
+  }
+  h3 .bar { width: 5px; height: 22px; background: #f9a8d4; border-radius: 2px; }
+  h3 .sub { font-size: 14px; font-weight: 400; color: #888; margin-left: 4px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; text-align: center; font-size: 15px; }
+  .table-wrap { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; }
+  thead tr { background: #f0f7f4; border-bottom: 1px solid #e5e7eb; }
+  th { padding: 12px 8px; font-weight: 700; color: #1b4332; }
+  th.label { font-weight: 600; color: #888; background: #f9fafb; border-right: 1px solid #e5e7eb; width: 20%; }
+  th .badge {
+    display: inline-block; padding: 2px 6px; border-radius: 4px;
+    font-size: 10px; margin-left: 4px; letter-spacing: 1px; white-space: nowrap;
+  }
+  th .badge-pink { background: #f9a8d4; color: #9f1239; font-weight: 700; }
+  td { padding: 12px 8px; color: #444; }
+  td.label { font-weight: 600; color: #1b4332; background: #f9fafb; border-right: 1px solid #e5e7eb; }
+  tbody tr { border-bottom: 1px solid #e5e7eb; }
+  tbody tr:last-child { border-bottom: none; }
+  th + th, td + td { border-left: 1px solid #e5e7eb; }
+
+  /* Footer */
+  .footer {
+    position: relative; z-index: 1;
+    margin-top: 32px; background: #f9fafb; border-radius: 8px;
+    padding: 20px 24px; border: 1px solid #e5e7eb;
+    font-size: 13px; color: #666; line-height: 1.8;
+  }
+  .footer p { display: flex; align-items: flex-start; gap: 8px; }
+  .footer .dot {
+    width: 5px; height: 5px; background: #1b4332; border-radius: 50%;
+    margin-top: 8px; flex-shrink: 0;
+  }
+  .footer .highlight { color: #1b4332; font-weight: 500; }
+  .footer .bold { font-weight: 600; color: #333; }
+  .highlight-box {
+    margin-top: 8px;
+    background: rgba(27,67,50,0.1);
+    border: 1px solid rgba(27,67,50,0.3);
+    border-radius: 8px;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .highlight-box .star { font-size: 18px; color: #1b4332; }
+  .highlight-box .highlight-text { font-weight: 700; color: #1b4332; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Watermark -->
+  <img class="watermark" src="images/logo/배경없는 로고.png" alt="">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <img class="header-logo" src="images/logo/흰색 배경 로고.png" alt="랠리테니스">
+      <span class="header-title">RALLY TENNIS</span>
+      <span class="header-sub">PROGRAM</span>
+    </div>
+    <span class="header-vat">* 부가세(VAT)는 별도입니다.</span>
+  </div>
+
+  <div class="content">
+
+    <!-- 평일 레슨 4주 프로그램 -->
+    <section>
+      <h3><span class="bar"></span>평일 레슨 4주 프로그램</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="label">구분</th>
+              <th>주 1회 <span class="badge badge-pink">월 4회</span></th>
+              <th>주 2회 <span class="badge badge-pink">월 8회</span></th>
+              <th>주 3회 <span class="badge badge-pink">월 12회</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="label">1:1</td><td>200,000원</td><td>310,000원</td><td>410,000원</td></tr>
+            <tr><td class="label">2:1</td><td>140,000원</td><td>220,000원</td><td>300,000원</td></tr>
+            <tr><td class="label">3:1</td><td>120,000원</td><td>180,000원</td><td>260,000원</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 주말 레슨 4주 프로그램 -->
+    <section>
+      <h3><span class="bar"></span>주말 레슨 4주 프로그램</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="label">구분</th>
+              <th>주 1회 <span class="badge badge-pink">월 4회</span></th>
+              <th>주 2회 <span class="badge badge-pink">월 8회</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="label">1:1</td><td>220,000원</td><td>330,000원</td></tr>
+            <tr><td class="label">2:1</td><td>160,000원</td><td>240,000원</td></tr>
+            <tr><td class="label">3:1</td><td>140,000원</td><td>200,000원</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 티켓 레슨 -->
+    <section>
+      <h3><span class="bar"></span>티켓 레슨</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="label">구분</th>
+              <th>5회 <span class="badge badge-pink">유효기간 30일</span></th>
+              <th>10회 <span class="badge badge-pink">유효기간 60일</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="label">1:1</td><td>300,000원</td><td>550,000원</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 원포인트 레슨 -->
+    <section>
+      <h3><span class="bar"></span>원포인트 레슨 <span class="sub">(30분 기준)</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td class="label">1:1</td><td>55,000원</td></tr>
+            <tr><td class="label">2:1</td><td>45,000원</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 개인락커 -->
+    <section>
+      <h3><span class="bar"></span>개인락커</h3>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td class="label">1개월</td><td>5,000원</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><span class="dot"></span><span><span class="bold">운영시간</span> 평일 06:30~22:00 | 주말 08:00~18:00 (공휴일 별도 안내)</span></p>
+    <p><span class="dot"></span><span>2인, 3인 레슨은 1인 기준 금액입니다.</span></p>
+    <p><span class="dot"></span><span>모든 레슨은 회당 30분 기준으로 진행됩니다.</span></p>
+    <p><span class="dot"></span><span style="font-weight:700; color:#db2777;">볼머신 / 야외 테라스 연습 가능</span></p>
+  </div>
+</div>
+</body>
+</html>
