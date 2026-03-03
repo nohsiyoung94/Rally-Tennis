@@ -31,7 +31,7 @@ export const dashboardStats: DashboardStat[] = [
   { label: "총 회원수", value: 158, change: "+5", changeType: "increase" },
   { label: "이번 달 매출", value: "₩4,200,000", change: "+12%", changeType: "increase" },
   { label: "활성 코치", value: 6, change: "0", changeType: "neutral" },
-  { label: "코트 가동률", value: "78%", change: "+5%", changeType: "increase" },
+  { label: "코트 이용률", value: "85%", change: "+8%", changeType: "increase" },
   { label: "신규 문의", value: 8, change: "-2", changeType: "decrease" },
 ];
 
@@ -56,40 +56,37 @@ export const coaches: Coach[] = [
 ];
 
 export const reservations: Reservation[] = [
-  { id: "R001", memberName: "김서연", coachName: "김태영", court: "A코트", date: "2026-02-23", time: "09:00", duration: 60, type: "개인레슨", status: "확정" },
-  { id: "R002", memberName: "이준호", coachName: "이수진", court: "B코트", date: "2026-02-23", time: "10:00", duration: 90, type: "개인레슨", status: "확정" },
-  { id: "R003", memberName: "박지민", coachName: "박준혁", court: "C코트", date: "2026-02-23", time: "11:00", duration: 60, type: "그룹레슨", status: "대기" },
-  { id: "R004", memberName: "최수아", coachName: "-", court: "D코트", date: "2026-02-23", time: "14:00", duration: 120, type: "코트대여", status: "확정" },
-  { id: "R005", memberName: "정민재", coachName: "최예린", court: "A코트", date: "2026-02-23", time: "15:00", duration: 60, type: "개인레슨", status: "확정" },
-  { id: "R006", memberName: "한유진", coachName: "김태영", court: "B코트", date: "2026-02-23", time: "16:00", duration: 60, type: "개인레슨", status: "취소" },
-  { id: "R007", memberName: "윤도현", coachName: "-", court: "C코트", date: "2026-02-24", time: "09:00", duration: 60, type: "자유연습", status: "대기" },
-  { id: "R008", memberName: "강하은", coachName: "이수진", court: "A코트", date: "2026-02-24", time: "10:00", duration: 90, type: "개인레슨", status: "확정" },
+  { id: "R001", memberName: "김서연", coachName: "김태영", court: "메인코트", date: "2026-02-23", time: "09:00", duration: 60, type: "개인레슨", status: "확정" },
+  { id: "R002", memberName: "이준호", coachName: "이수진", court: "메인코트", date: "2026-02-23", time: "10:00", duration: 90, type: "개인레슨", status: "확정" },
+  { id: "R003", memberName: "박지민", coachName: "박준혁", court: "메인코트", date: "2026-02-23", time: "11:00", duration: 60, type: "그룹레슨", status: "대기" },
+  { id: "R004", memberName: "최수아", coachName: "-", court: "메인코트", date: "2026-02-23", time: "14:00", duration: 120, type: "코트대여", status: "확정" },
+  { id: "R005", memberName: "정민재", coachName: "최예린", court: "메인코트", date: "2026-02-23", time: "15:00", duration: 60, type: "개인레슨", status: "확정" },
+  { id: "R006", memberName: "한유진", coachName: "김태영", court: "메인코트", date: "2026-02-23", time: "16:00", duration: 60, type: "개인레슨", status: "취소" },
+  { id: "R007", memberName: "윤도현", coachName: "-", court: "메인코트", date: "2026-02-24", time: "09:00", duration: 60, type: "자유연습", status: "대기" },
+  { id: "R008", memberName: "강하은", coachName: "이수진", court: "메인코트", date: "2026-02-24", time: "10:00", duration: 90, type: "개인레슨", status: "확정" },
 ];
 
 export const scheduleSlots: ScheduleSlot[] = [
-  { id: "S001", day: "월", time: "09:00", court: "A코트", coachName: "김태영", type: "개인레슨", memberName: "김서연" },
-  { id: "S002", day: "월", time: "09:00", court: "B코트", coachName: "이수진", type: "그룹레슨" },
-  { id: "S003", day: "월", time: "10:00", court: "A코트", coachName: "박준혁", type: "개인레슨", memberName: "이준호" },
-  { id: "S004", day: "월", time: "10:00", court: "C코트", type: "비어있음" },
-  { id: "S005", day: "화", time: "09:00", court: "A코트", coachName: "최예린", type: "그룹레슨" },
-  { id: "S006", day: "화", time: "10:00", court: "B코트", coachName: "김태영", type: "개인레슨", memberName: "박지민" },
-  { id: "S007", day: "수", time: "09:00", court: "A코트", type: "점검" },
-  { id: "S008", day: "수", time: "09:00", court: "B코트", coachName: "이수진", type: "개인레슨", memberName: "한유진" },
-  { id: "S009", day: "수", time: "10:00", court: "A코트", coachName: "김태영", type: "개인레슨", memberName: "강하은" },
-  { id: "S010", day: "목", time: "09:00", court: "A코트", coachName: "박준혁", type: "그룹레슨" },
-  { id: "S011", day: "목", time: "10:00", court: "B코트", coachName: "최예린", type: "개인레슨", memberName: "정민재" },
-  { id: "S012", day: "금", time: "09:00", court: "A코트", coachName: "김태영", type: "개인레슨", memberName: "김서연" },
-  { id: "S013", day: "금", time: "10:00", court: "C코트", coachName: "한소희", type: "개인레슨", memberName: "최수아" },
-  { id: "S014", day: "토", time: "09:00", court: "A코트", coachName: "이수진", type: "그룹레슨" },
-  { id: "S015", day: "토", time: "09:00", court: "B코트", coachName: "박준혁", type: "그룹레슨" },
-  { id: "S016", day: "토", time: "10:00", court: "A코트", type: "코트대여" },
+  { id: "S001", day: "월", time: "09:00", court: "메인코트", coachName: "김태영", type: "개인레슨", memberName: "김서연" },
+  { id: "S002", day: "월", time: "09:00", court: "메인코트", coachName: "이수진", type: "그룹레슨" },
+  { id: "S003", day: "월", time: "10:00", court: "메인코트", coachName: "박준혁", type: "개인레슨", memberName: "이준호" },
+  { id: "S004", day: "월", time: "10:00", court: "메인코트", type: "비어있음" },
+  { id: "S005", day: "화", time: "09:00", court: "메인코트", coachName: "최예린", type: "그룹레슨" },
+  { id: "S006", day: "화", time: "10:00", court: "메인코트", coachName: "김태영", type: "개인레슨", memberName: "박지민" },
+  { id: "S007", day: "수", time: "09:00", court: "메인코트", type: "점검" },
+  { id: "S008", day: "수", time: "09:00", court: "메인코트", coachName: "이수진", type: "개인레슨", memberName: "한유진" },
+  { id: "S009", day: "수", time: "10:00", court: "메인코트", coachName: "김태영", type: "개인레슨", memberName: "강하은" },
+  { id: "S010", day: "목", time: "09:00", court: "메인코트", coachName: "박준혁", type: "그룹레슨" },
+  { id: "S011", day: "목", time: "10:00", court: "메인코트", coachName: "최예린", type: "개인레슨", memberName: "정민재" },
+  { id: "S012", day: "금", time: "09:00", court: "메인코트", coachName: "김태영", type: "개인레슨", memberName: "김서연" },
+  { id: "S013", day: "금", time: "10:00", court: "메인코트", coachName: "한소희", type: "개인레슨", memberName: "최수아" },
+  { id: "S014", day: "토", time: "09:00", court: "메인코트", coachName: "이수진", type: "그룹레슨" },
+  { id: "S015", day: "토", time: "09:00", court: "메인코트", coachName: "박준혁", type: "그룹레슨" },
+  { id: "S016", day: "토", time: "10:00", court: "메인코트", type: "코트대여" },
 ];
 
 export const facilities: Facility[] = [
-  { id: "F001", name: "A코트", type: "실내코트", status: "사용가능", surface: "하드코트", capacity: 4, description: "메인 코트 / LED 조명 완비" },
-  { id: "F002", name: "B코트", type: "실내코트", status: "예약됨", surface: "하드코트", capacity: 4, description: "서브코트 / 방음 처리" },
-  { id: "F003", name: "C코트", type: "실내코트", status: "사용가능", surface: "카펫", capacity: 4, description: "다목적 코트" },
-  { id: "F004", name: "D코트", type: "실외코트", status: "점검중", surface: "클레이", capacity: 4, description: "야외 코트 / 야간조명" },
+  { id: "F001", name: "메인코트", type: "실내코트", status: "사용가능", surface: "하드코트", capacity: 4, description: "LED 조명 완비 / 국제 규격 실내 하드코트" },
   { id: "F005", name: "피트니스룸", type: "부대시설", status: "사용가능", capacity: 10, description: "웨이트 + 스트레칭 공간" },
   { id: "F006", name: "라운지", type: "부대시설", status: "사용가능", capacity: 20, description: "회원 휴게 공간 / 음료 자판기" },
   { id: "F007", name: "프로샵", type: "부대시설", status: "사용가능", description: "라켓, 스트링, 의류 판매" },
@@ -108,19 +105,19 @@ export const contentPages: ContentPage[] = [
 export const notices: Notice[] = [
   { id: "N001", title: "2월 운영시간 변경 안내", category: "공지", status: "게시중", createdAt: "2026-02-01", views: 234 },
   { id: "N002", title: "봄맞이 회원 할인 이벤트", category: "이벤트", status: "게시중", createdAt: "2026-02-10", views: 189 },
-  { id: "N003", title: "D코트 정기점검 안내 (2/25~2/27)", category: "점검", status: "게시중", createdAt: "2026-02-20", views: 67 },
+  { id: "N003", title: "메인코트 정기점검 안내 (2/25~2/27)", category: "점검", status: "게시중", createdAt: "2026-02-20", views: 67 },
   { id: "N004", title: "신규 코치 소개 - 한소희 코치", category: "안내", status: "게시중", createdAt: "2026-02-15", views: 142 },
   { id: "N005", title: "3월 그룹레슨 모집 안내", category: "공지", status: "예약", createdAt: "2026-02-23", views: 0 },
 ];
 
 export const businessHours: BusinessHours[] = [
-  { day: "월요일", open: "06:00", close: "22:00", isHoliday: false },
-  { day: "화요일", open: "06:00", close: "22:00", isHoliday: false },
-  { day: "수요일", open: "06:00", close: "22:00", isHoliday: false },
-  { day: "목요일", open: "06:00", close: "22:00", isHoliday: false },
-  { day: "금요일", open: "06:00", close: "22:00", isHoliday: false },
-  { day: "토요일", open: "08:00", close: "20:00", isHoliday: false },
-  { day: "일요일", open: "09:00", close: "18:00", isHoliday: true },
+  { day: "월요일", open: "06:30", close: "22:00", isHoliday: false },
+  { day: "화요일", open: "06:30", close: "22:00", isHoliday: false },
+  { day: "수요일", open: "06:30", close: "22:00", isHoliday: false },
+  { day: "목요일", open: "06:30", close: "22:00", isHoliday: false },
+  { day: "금요일", open: "06:30", close: "22:00", isHoliday: false },
+  { day: "토요일", open: "08:00", close: "18:00", isHoliday: false },
+  { day: "일요일", open: "08:00", close: "18:00", isHoliday: false },
 ];
 
 export const adminUsers: AdminUser[] = [
@@ -134,7 +131,7 @@ export const recentActivities: Activity[] = [
   { id: "ACT002", type: "payment", message: "이준호님 레슨비 120,000원 결제 완료", time: "25분 전" },
   { id: "ACT003", type: "member", message: "한유진님이 분기 회원권을 갱신했습니다", time: "1시간 전" },
   { id: "ACT004", type: "reservation", message: "박지민님이 2/23 11:00 그룹레슨 예약을 취소했습니다", time: "2시간 전" },
-  { id: "ACT005", type: "system", message: "D코트 점검 일정이 등록되었습니다 (2/25~2/27)", time: "3시간 전" },
+  { id: "ACT005", type: "system", message: "메인코트 점검 일정이 등록되었습니다 (2/25~2/27)", time: "3시간 전" },
   { id: "ACT006", type: "payment", message: "박지민님 연간회원 갱신 1,200,000원 입금 확인", time: "4시간 전" },
   { id: "ACT007", type: "member", message: "신규 회원 가입: 강하은님", time: "5시간 전" },
 ];

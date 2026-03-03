@@ -1,19 +1,62 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import KakaoMap from "@/components/KakaoMap";
 import type { Court, SectionTitleProps } from "@/types";
 
 
+
+const viewImages = [
+  { src: "/images/view/view-1.png", alt: "아카데미 조감도 1" },
+  { src: "/images/view/view-2.png", alt: "아카데미 조감도 2" },
+  { src: "/images/view/view-3.png", alt: "아카데미 조감도 3" },
+];
+
+/* ── About Slider Component ── */
+function AboutSlider() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % viewImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative rounded-lg overflow-hidden h-64 md:h-80">
+      {viewImages.map((img, i) => (
+        <Image
+          key={i}
+          src={img.src}
+          alt={img.alt}
+          fill
+          className={`object-contain md:object-cover transition-opacity duration-700 ${i === current ? "opacity-100" : "opacity-0"}`}
+        />
+      ))}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+        {viewImages.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2 h-2 rounded-full transition-all ${i === current ? "bg-white w-5" : "bg-white/50"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 /* ── Section Title Component ── */
 function SectionTitle({ eng, kor }: SectionTitleProps) {
   return (
     <div className="text-center mb-14">
-      <h2 className="font-serif text-3xl md:text-4xl font-semibold text-primary tracking-wide">
+      <h2 className="font-serif text-3xl md:text-4xl font-semibold text-[#800020] tracking-wide">
         {eng}
       </h2>
-      <p className="text-gray-500 text-sm mt-2 tracking-widest">{kor}</p>
+      <p className="text-[#800020] text-sm mt-2 tracking-widest">{kor}</p>
       <div className="w-12 h-[2px] bg-accent mx-auto mt-4" />
     </div>
   );
@@ -49,24 +92,24 @@ export default function HomePage() {
   return (
     <div>
       {/* ═══ HERO ═══ */}
-      <section className="relative min-h-screen flex items-center justify-center bg-primary overflow-hidden -mt-40">
-        {/* Background tennis image */}
+      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden -mt-30">
+        {/* Background tennis court image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1920&q=80')" }}
         />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-primary/70" />
+        {/* White overlay - 코트가 은은하게 비침 */}
+        <div className="absolute inset-0 bg-white/35" />
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <p className="text-accent text-sm tracking-[0.3em] uppercase mb-6 font-medium">
+          <p className="text-[#800020] text-sm tracking-[0.3em] uppercase mb-6 font-medium">
             Premium Tennis Academy
           </p>
-          <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+          <h1 className="text-primary text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
             당신의 테니스가<br />
-            <span className="text-accent">시작되는 곳</span>
+            <span className="text-[#800020]">시작되는 곳</span>
           </h1>
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+          <p className="text-primary text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
             체계적인 레슨 프로그램과 프리미엄 시설에서<br className="hidden md:block" />
             테니스의 진정한 즐거움을 경험하세요
           </p>
@@ -79,7 +122,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/lessons"
-              className="border border-white/30 text-white px-10 py-4 text-sm font-medium tracking-wider uppercase hover:border-accent hover:text-accent transition-colors"
+              className="border border-primary/30 text-primary px-10 py-4 text-sm font-medium tracking-wider uppercase hover:border-accent-dark hover:text-accent-dark transition-colors"
             >
               프로그램 보기
             </Link>
@@ -88,9 +131,9 @@ export default function HomePage() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="text-white/60 text-xs tracking-widest uppercase">Scroll</span>
-          <div className="w-[1px] h-8 bg-white/20 relative overflow-hidden">
-            <div className="w-full h-3 bg-accent animate-bounce" />
+          <span className="text-[#800020] text-xs tracking-widest uppercase">Scroll</span>
+          <div className="w-[1px] h-8 text-[#800020] relative overflow-hidden">
+            <div className="w-full h-3 bg-accent-dark animate-bounce" />
           </div>
         </div>
       </section>
@@ -111,26 +154,24 @@ export default function HomePage() {
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-accent">15+</div>
-                  <div className="text-gray-500 text-sm mt-1">년 지도 경력</div>
+                  <div className="text-3xl font-bold text-accent">2</div>
+                  <div className="text-gray-500 text-sm mt-1">실내 코트</div>
                 </div>
                 <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-accent">4</div>
-                  <div className="text-gray-500 text-sm mt-1">전문 코트</div>
+                  <div className="text-3xl font-bold text-accent">1</div>
+                  <div className="text-gray-500 text-sm mt-1">야외 코트</div>
                 </div>
                 <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-accent">500+</div>
-                  <div className="text-gray-500 text-sm mt-1">수강생</div>
-                </div>
-                <div className="text-center p-4">
-                  <div className="text-3xl font-bold text-accent">4</div>
+                  <div className="text-3xl font-bold text-accent">2</div>
                   <div className="text-gray-500 text-sm mt-1">전문 코치진</div>
+                </div>
+                <div className="text-center p-4">
+                  <div className="text-3xl font-bold text-accent">볼머신</div>
+                  <div className="text-gray-500 text-sm mt-1">연습장 보유</div>
                 </div>
               </div>
             </div>
-            <div className="bg-primary-bg2 rounded-lg h-80 flex items-center justify-center text-gray-400 text-sm">
-              아카데미 대표 이미지
-            </div>
+            <AboutSlider />
           </div>
         </div>
       </section>
@@ -141,29 +182,43 @@ export default function HomePage() {
         <div ref={(el) => addRef(el, 4)} className="section-hidden max-w-[800px] mx-auto text-center">
           <SectionTitle eng="Contact" kor="상담 문의" />
           <p className="text-gray-600 leading-8 mb-10 -mt-6">
-            레슨 상담 및 시설 이용 문의는 전화 또는 카카오톡으로 연락 주세요.<br />
+            레슨 상담 및 시설 이용 문의는 전화로 연락 주세요.<br />
             친절하게 안내해 드리겠습니다.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-            <div className="p-6 bg-primary-bg rounded-lg">
-              <p className="text-accent font-bold text-lg mb-1">전화</p>
-              <p className="text-gray-700 font-medium">02-1234-5678</p>
-            </div>
-            <div className="p-6 bg-primary-bg rounded-lg">
-              <p className="text-accent font-bold text-lg mb-1">카카오톡</p>
-              <p className="text-gray-700 font-medium">@랠리테니스</p>
-            </div>
-            <div className="p-6 bg-primary-bg rounded-lg">
-              <p className="text-accent font-bold text-lg mb-1">이메일</p>
-              <p className="text-gray-700 font-medium">info@rallytennis.co.kr</p>
+          <div className="max-w-sm mx-auto mb-10">
+            <div className="flex flex-col items-center gap-4 p-8 bg-white rounded-xl border border-gray-200 shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-8 h-8 text-accent"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-800">전화 상담</h3>
+              <p className="text-2xl font-bold text-primary">0507-1442-2092</p>
+              <a
+                href="tel:0507-1442-2092"
+                className="inline-block w-full text-center bg-accent text-primary font-bold py-3 rounded-lg hover:bg-accent-light transition-colors"
+              >
+                전화하기
+              </a>
             </div>
           </div>
 
           <div className="inline-block bg-primary-bg rounded-lg px-8 py-5">
             <p className="text-gray-500 text-sm mb-1">상담 가능 시간</p>
             <p className="text-gray-700 text-sm">
-              평일 09:00 - 21:00 | 토요일 09:00 - 18:00 | 일/공휴일 휴무
+              평일 06:30 - 22:00 | 주말 08:00 - 18:00 | 공휴일 별도 안내
             </p>
           </div>
         </div>
@@ -175,29 +230,26 @@ export default function HomePage() {
           <SectionTitle eng="Location" kor="오시는 길" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Map placeholder */}
-            <div className="bg-primary-bg2 rounded-lg h-80 flex items-center justify-center text-gray-400 text-sm border border-gray-200">
-              지도 영역 (카카오맵 / 네이버맵 연동 예정)
-            </div>
+            <KakaoMap className="w-full h-80" />
 
             {/* Info */}
             <div className="flex flex-col justify-center gap-6">
               <div>
                 <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">Address</p>
-                <p className="text-gray-800 font-medium">서울특별시 강남구 테니스로 123</p>
-                <p className="text-gray-500 text-sm">랠리테니스 아카데미 빌딩 1~3층</p>
+                <p className="text-gray-800 font-medium">경기도 용인시 수지구 고기로 163, </p>
+                <p className="text-gray-500 text-sm">2층(동천동, 헤이젠빌딩)</p>
               </div>
               <div>
                 <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">Subway</p>
-                <p className="text-gray-600 text-sm">2호선 테니스역 3번 출구 도보 5분</p>
+                <p className="text-gray-600 text-sm">동천초등학교 도보 10분</p>
               </div>
               <div>
                 <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">Bus</p>
-                <p className="text-gray-600 text-sm">340, 401, 740번 테니스정류장 하차</p>
+                <p className="text-gray-600 text-sm">14번 14-번 이우중고등학교/주성카센터 하차</p>
               </div>
               <div>
                 <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-2">Parking</p>
-                <p className="text-gray-600 text-sm">건물 지하 1~2층 / 수강생 2시간 무료</p>
+                <p className="text-gray-600 text-sm">건물 1층 / 수강생 2시간 무료</p>
               </div>
             </div>
           </div>

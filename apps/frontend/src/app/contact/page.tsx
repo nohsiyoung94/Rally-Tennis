@@ -1,100 +1,86 @@
-"use client";
+import type { ContactInfo } from "@/types";
 
-import { useState } from "react";
-import type { ContactInfo, ContactForm } from "@/types";
-
-const contactInfo: ContactInfo[] = [
-  { title: "전화", value: "02-1234-5678" },
-  { title: "카카오톡", value: "@랠리테니스" },
+const subInfo: ContactInfo[] = [
   { title: "이메일", value: "info@rallytennis.co.kr" },
   { title: "주소", value: "서울특별시 강남구 테니스로 123" },
 ];
 
 export default function ContactPage() {
-  const [form, setForm] = useState<ContactForm>({ name: "", phone: "", email: "", type: "일반 문의", message: "" });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("문의가 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.");
-  };
-
-  const inputClass = "w-full px-4 py-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent bg-white";
-
   return (
     <div>
-      <div className="bg-primary text-white py-20 px-6 text-center">
-        <p className="text-accent text-xs tracking-[0.2em] uppercase mb-2">Contact Us</p>
-        <h1 className="text-3xl md:text-4xl font-bold">상담문의</h1>
-        <div className="w-12 h-[2px] bg-accent mx-auto mt-4" />
+      {/* 히어로 배너 */}
+      <div className="relative py-20 px-6 text-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1560012057-4372e14c5085?w=1920&q=80')",
+          }}
+        />
+        <div className="absolute inset-0 bg-white/70" />
+        <div className="relative z-10">
+          <p className="text-pink-400 text-xs tracking-[0.2em] uppercase mb-2">
+            Contact Us
+          </p>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+            상담문의
+          </h1>
+          <div className="w-12 h-[2px] bg-pink-300 mx-auto mt-4" />
+        </div>
       </div>
 
+      {/* 메인 영역 */}
       <div className="max-w-[900px] mx-auto py-16 px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <h2 className="text-xl text-primary font-semibold mb-6">상담 문의하기</h2>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <div>
-                <label className="block mb-1 font-medium text-sm text-gray-600">이름 *</label>
-                <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-1 font-medium text-sm text-gray-600">연락처 *</label>
-                <input type="tel" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="010-0000-0000" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-1 font-medium text-sm text-gray-600">이메일</label>
-                <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-1 font-medium text-sm text-gray-600">문의 유형</label>
-                <select value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} className={`${inputClass}`}>
-                  <option>일반 문의</option>
-                  <option>레슨 상담</option>
-                  <option>시설 이용 문의</option>
-                  <option>단체 레슨 문의</option>
-                  <option>기타</option>
-                </select>
-              </div>
-              <div>
-                <label className="block mb-1 font-medium text-sm text-gray-600">문의 내용 *</label>
-                <textarea
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  placeholder="문의하실 내용을 입력해주세요."
-                  className={`${inputClass} resize-y`}
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-accent text-primary border-none py-3 rounded-md text-base font-bold cursor-pointer hover:bg-accent-light transition-colors mt-2"
+        <p className="text-center text-gray-600 mb-10 text-base">
+          레슨 상담 및 문의는 전화로 편하게 연락해주세요.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {/* 왼쪽 - 전화 상담 */}
+          <div className="flex flex-col items-center justify-center gap-4 p-8 bg-white rounded-xl border border-gray-200 shadow-sm">
+            <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-8 h-8 text-accent"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
               >
-                문의하기
-              </button>
-            </form>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
+            </div>
+            <h2 className="text-lg font-bold text-gray-800">전화 상담</h2>
+            <p className="text-2xl font-bold text-primary">0507-1442-2092</p>
+            <a
+              href="tel:0507-1442-2092"
+              className="inline-block w-full text-center bg-accent text-primary font-bold py-3 rounded-lg hover:bg-accent-light transition-colors"
+            >
+              전화하기
+            </a>
           </div>
 
-          <div>
-            <h2 className="text-xl text-primary font-semibold mb-6">연락처 정보</h2>
-            <div className="flex flex-col gap-4">
-              {contactInfo.map((item) => (
-                <div key={item.title} className="flex items-start gap-3 p-4 bg-primary-bg rounded-lg border-l-4 border-accent">
-                  <div>
-                    <div className="font-semibold text-sm text-primary">{item.title}</div>
-                    <div className="text-gray-600 text-sm mt-0.5">{item.value}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 p-5 bg-primary-bg rounded-lg border border-gray-200">
-              <h3 className="text-accent font-semibold text-sm mb-2">상담 가능 시간</h3>
+          {/* 오른쪽 - 보조 정보 */}
+          <div className="flex flex-col justify-center gap-4 p-8 bg-primary-bg rounded-xl border-l-4 border-pink-400">
+            <div>
+              <h3 className="font-semibold text-primary text-sm mb-2">상담 가능 시간</h3>
               <p className="text-gray-600 text-sm leading-7">
-                평일: 09:00 - 21:00<br />
-                토요일: 09:00 - 18:00<br />
-                일요일 / 공휴일: 휴무
+                평일 06:30 - 22:00<br />
+                주말 08:00 - 18:00<br />
+                공휴일 별도 안내
               </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-primary text-sm mb-2">이메일</h3>
+              <p className="text-gray-600 text-sm">cho0614@naver.com</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-primary text-sm mb-2">주소</h3>
+              <p className="text-gray-600 text-sm">경기도 용인시 수지구 고기로 163,2층(동천동, 헤이젠빌딩)</p>
             </div>
           </div>
         </div>

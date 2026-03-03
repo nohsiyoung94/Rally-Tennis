@@ -12,7 +12,7 @@ import type { ScheduleSlot } from "@/types";
 
 const days = ["월", "화", "수", "목", "금", "토"];
 const times = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"];
-const courts = ["A코트", "B코트", "C코트", "D코트"];
+const courts = ["메인코트"];
 
 const typeColors: Record<string, string> = {
   개인레슨: "bg-info-bg border-info text-info",
@@ -27,7 +27,7 @@ const slotTypes: ScheduleSlot["type"][] = ["개인레슨", "그룹레슨", "코�
 const initialForm = {
   day: "월",
   time: "09:00",
-  court: "A코트",
+  court: "메인코트",
   type: "개인레슨" as ScheduleSlot["type"],
   coachName: "",
   memberName: "",
@@ -102,23 +102,6 @@ export default function SchedulePage() {
         action={<Button onClick={() => handleOpenModal()}>+ 스케줄 추가</Button>}
       />
 
-      {/* Court filter */}
-      <div className="flex gap-2 mb-4">
-        {["전체", ...courts].map((court) => (
-          <button
-            key={court}
-            onClick={() => setSelectedCourt(court)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
-              selectedCourt === court
-                ? "bg-accent text-white"
-                : "bg-white text-text-muted border border-border hover:bg-gray-50"
-            }`}
-          >
-            {court}
-          </button>
-        ))}
-      </div>
-
       <Card noPadding>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -158,9 +141,6 @@ export default function SchedulePage() {
                         >
                           <p className="text-xs font-medium truncate">
                             {slot.type}
-                            {selectedCourt === "전체" && (
-                              <span className="opacity-60"> · {slot.court}</span>
-                            )}
                           </p>
                           {slot.coachName && (
                             <p className="text-xs truncate opacity-80">{slot.coachName}</p>
@@ -276,20 +256,16 @@ export default function SchedulePage() {
               options={times.map((t) => ({ value: t, label: t }))}
             />
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <Select
-              label="코트 *"
-              value={form.court}
-              onChange={(e) => setForm({ ...form, court: e.target.value })}
-              options={courts.map((c) => ({ value: c, label: c }))}
-            />
-            <Select
-              label="유형 *"
-              value={form.type}
-              onChange={(e) => setForm({ ...form, type: e.target.value as ScheduleSlot["type"] })}
-              options={slotTypes.map((t) => ({ value: t, label: t }))}
-            />
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-medium text-text-primary">코트</label>
+            <p className="px-3 py-2 border border-border rounded-lg text-sm bg-gray-50 text-text-secondary">메인코트</p>
           </div>
+          <Select
+            label="유형 *"
+            value={form.type}
+            onChange={(e) => setForm({ ...form, type: e.target.value as ScheduleSlot["type"] })}
+            options={slotTypes.map((t) => ({ value: t, label: t }))}
+          />
           {form.type !== "점검" && form.type !== "코트대여" && (
             <Select
               label="코치"

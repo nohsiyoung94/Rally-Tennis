@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,8 +23,9 @@ export default function RootLayout({
         />
       </head>
       <body className="m-0 font-sans text-gray-800">
+        <ScrollToTop />
         <Header />
-        <main className="pt-40">
+        <main className="pt-30">
           {children}
         </main>
         <Footer />

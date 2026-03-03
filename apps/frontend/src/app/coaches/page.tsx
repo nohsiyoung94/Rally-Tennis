@@ -4,7 +4,7 @@ import type { CoachDetail } from "@/types";
 const coaches: CoachDetail[] = [
   {
     name: "김태훈",
-    role: "헤드코치",
+    role: "대표",
     imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
     career: [
       "대한테니스협회 공인 지도자",
@@ -20,16 +20,33 @@ const coaches: CoachDetail[] = [
     specialty: "전술 분석 및 경기력 향상",
     message: "기본기에 충실한 훈련이 최고의 경기력을 만듭니다. 함께 성장하겠습니다.",
   },
-
+  {
+    name: "이서준",
+    role: "코치",
+    imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&q=80",
+    career: [
+      "대한테니스협회 공인 지도자",
+      "지도 경력 다수",
+    ],
+    awards: [
+      "KTA 자격 취득",
+    ],
+    specialty: "기초 레슨 및 실력 향상",
+    message: "즐거운 테니스, 함께 만들어 가겠습니다.",
+  },
 ];
 
 export default function CoachesPage() {
   return (
     <div>
-      <div className="bg-primary text-white py-20 px-6 text-center">
-        <p className="text-accent text-xs tracking-[0.2em] uppercase mb-2">Our Coaches</p>
-        <h1 className="text-3xl md:text-4xl font-bold">강사 소개</h1>
-        <div className="w-12 h-[2px] bg-accent mx-auto mt-4" />
+      <div className="relative py-20 px-6 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=1920&q=80')" }} />
+        <div className="absolute inset-0 bg-white/70" />
+        <div className="relative z-10">
+          <p className="text-pink-400 text-xs tracking-[0.2em] uppercase mb-2">Our Coaches</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">강사 소개</h1>
+          <div className="w-12 h-[2px] bg-pink-300 mx-auto mt-4" />
+        </div>
       </div>
 
       <div className="max-w-[1000px] mx-auto py-16 px-6">

@@ -1,38 +1,48 @@
+import Image from "next/image";
 import type { CourtWithStatus, Amenity } from "@/types";
 
-const courts: CourtWithStatus[] = [
-  { name: "A코트", type: "하드코트", status: "운영중", desc: "국제 규격 하드코트로 대회 연습에 적합" },
-  { name: "B코트", type: "하드코트", status: "운영중", desc: "야간 조명 완비, 저녁 레슨 가능" },
-  { name: "C코트", type: "클레이코트", status: "운영중", desc: "관절에 부담이 적은 클레이 서페이스" },
-  { name: "D코트", type: "실내코트", status: "운영중", desc: "날씨와 관계없이 쾌적한 실내 환경" },
+const courts: (CourtWithStatus & { imageUrl: string })[] = [
+  { name: "실내 코트 A", type: "실내 하드코트", status: "운영중", desc: "LED 조명 완비, 쾌적한 실내 환경", imageUrl: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&q=80" },
+  { name: "실내 코트 B", type: "실내 하드코트", status: "운영중", desc: "LED 조명 완비, 쾌적한 실내 환경", imageUrl: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&q=80" },
+  { name: "야외 코트", type: "야외 하드코트", status: "운영중", desc: "자연 채광 아래 즐기는 야외 코트", imageUrl: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=800&q=80" },
+  { name: "볼머신 연습장", type: "볼머신 전용", status: "운영중", desc: "자동 볼머신으로 자유롭게 스윙 연습", imageUrl: "https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800&q=80" },
 ];
 
 const amenities: Amenity[] = [
   { name: "샤워실 & 탈의실", desc: "남녀 분리 샤워실과 넓은 탈의실" },
   { name: "휴게 라운지", desc: "음료 자판기와 편안한 휴식 공간" },
   { name: "주차장", desc: "지하 1~2층, 수강생 2시간 무료" },
-  { name: "프로샵", desc: "라켓, 스트링, 용품 구매 가능" },
 ];
 
 export default function FacilitiesPage() {
   return (
     <div>
-      <div className="bg-primary text-white py-20 px-6 text-center">
-        <p className="text-accent text-xs tracking-[0.2em] uppercase mb-2">Facilities</p>
-        <h1 className="text-3xl md:text-4xl font-bold">시설안내</h1>
-        <div className="w-12 h-[2px] bg-accent mx-auto mt-4" />
+      <div className="relative py-20 px-6 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=1920&q=80')" }} />
+        <div className="absolute inset-0 bg-white/70" />
+        <div className="relative z-10">
+          <p className="text-pink-400 text-xs tracking-[0.2em] uppercase mb-2">Facilities</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">시설안내</h1>
+          <div className="w-12 h-[2px] bg-pink-300 mx-auto mt-4" />
+        </div>
       </div>
 
       <div className="max-w-[900px] mx-auto py-16 px-6">
         <section className="mb-14">
-          <h2 className="text-xl text-primary font-semibold border-b-2 border-accent pb-2 mb-6">
+          <h2 className="text-xl text-primary font-semibold border-b-2 border-pink-400 pb-2 mb-6">
             코트 현황
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {courts.map((court) => (
               <div key={court.name} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="h-28 bg-primary flex items-center justify-center">
-                  <span className="text-accent text-2xl">&#9776;</span>
+                <div className="relative h-44">
+                  <Image
+                    src={court.imageUrl}
+                    alt={court.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-1">
@@ -50,12 +60,12 @@ export default function FacilitiesPage() {
         </section>
 
         <section>
-          <h2 className="text-xl text-primary font-semibold border-b-2 border-accent pb-2 mb-6">
+          <h2 className="text-xl text-primary font-semibold border-b-2 border-pink-400 pb-2 mb-6">
             부대시설
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {amenities.map((item) => (
-              <div key={item.name} className="p-5 bg-primary-bg rounded-lg border-l-4 border-accent">
+              <div key={item.name} className="p-5 bg-primary-bg rounded-lg border-l-4 border-pink-400">
                 <h3 className="text-primary font-semibold text-sm mb-1">{item.name}</h3>
                 <p className="text-gray-500 text-sm">{item.desc}</p>
               </div>

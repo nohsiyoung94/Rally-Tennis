@@ -13,18 +13,18 @@ const footerLinks: MenuItem[] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0f2419] text-gray-400 pt-16 pb-8 px-6 text-sm">
+    <footer className="bg-gray-300 text-gray-600 pt-10 pb-6 px-6 text-sm">
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/images/logo/흰배경.png"
+                src="/images/logo/logo-white.png"
                 alt="랠리테니스 로고"
                 width={128}
                 height={44}
-                className="object-contain w-auto h-auto"
+                className="object-contain h-auto"
               />
             </div>
             <p className="leading-7 text-gray-500">
@@ -35,7 +35,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-accent text-xs font-semibold tracking-[0.15em] uppercase mb-4">
+            <h4 className="text-pink-400 text-xs font-semibold tracking-[0.15em] uppercase mb-4">
               Quick Links
             </h4>
             <div className="flex flex-col gap-2">
@@ -43,7 +43,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-gray-500 hover:text-accent transition-colors"
+                  className="text-gray-500 hover:text-pink-400 transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -53,39 +53,38 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-accent text-xs font-semibold tracking-[0.15em] uppercase mb-4">
+            <h4 className="text-pink-400 text-xs font-semibold tracking-[0.15em] uppercase mb-4">
               Contact
             </h4>
             <p className="leading-7 text-gray-500">
-              Tel. 02-1234-5678<br />
-              Email. info@rallytennis.co.kr<br />
-              카카오톡. @랠리테니스
+              Tel. 0507-1442-2092<br />
+              Email. cho0614@naver.com<br />
             </p>
           </div>
 
           {/* Hours */}
           <div>
-            <h4 className="text-accent text-xs font-semibold tracking-[0.15em] uppercase mb-4">
+            <h4 className="text-pink-400 text-xs font-semibold tracking-[0.15em] uppercase mb-4">
               Hours
             </h4>
             <p className="leading-7 text-gray-500">
-              평일 06:00 - 22:00<br />
-              토요일 07:00 - 20:00<br />
-              일/공휴일 08:00 - 18:00
+              평일 06:30 - 22:00<br />
+              주말 08:00 - 18:00<br />
+              공휴일 별도 안내
             </p>
           </div>
         </div>
 
         {/* Business Info */}
-        <div className="border-t border-white/10 pt-8 mb-6">
-          <p className="text-gray-600 text-xs leading-6">
+        <div className="border-t border-gray-200 pt-8 mb-6">
+          <p className="text-gray-500 text-xs leading-6">
             상호: 랠리테니스 아카데미 | 대표: 조용규 | 사업자등록번호: 111-12-71808<br />
-            주소: 경기도 용인시 수지구 고기로 163, 2층(동천동, 헤이젠빌딩) | 이메일: info@rallytennis.co.kr
+            주소: 경기도 용인시 수지구 고기로 163, 2층(동천동, 헤이젠빌딩) | 이메일: cho0614@naver.com
           </p>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 pt-6 text-center text-gray-600 text-xs">
+        <div className="border-t border-gray-200 pt-6 text-center text-gray-500 text-xs">
           &copy; {new Date().getFullYear()} Rally Tennis Academy. All rights reserved.
         </div>
       </div>
