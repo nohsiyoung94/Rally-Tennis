@@ -91,6 +91,14 @@ export default function Header() {
         </button>
       </div>
 
+      {/* Mobile overlay - 메뉴보다 먼저 렌더링 */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 md:hidden z-[55]"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
       {/* Mobile slide-in menu */}
       <div
         className={`fixed top-0 right-0 h-full w-72 bg-primary shadow-2xl transform transition-transform duration-300 md:hidden z-[60] ${mobileOpen ? "translate-x-0" : "translate-x-full"
@@ -116,16 +124,15 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            className="text-accent py-4 text-sm font-bold hover:text-accent-light transition-colors"
+            onClick={() => setMobileOpen(false)}
+          >
+            상담문의
+          </Link>
         </nav>
       </div>
-
-      {/* Mobile overlay */}
-      {mobileOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 md:hidden z-[55]"
-          onClick={() => setMobileOpen(false)}
-        />
-      )}
     </header>
   );
 }
