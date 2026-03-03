@@ -39,6 +39,11 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
+  // 페이지 이동 시 메뉴 닫기
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   const isHome = pathname === "/";
   const isScrolledOrSub = scrolled || !isHome;
   const headerBg = isScrolledOrSub
@@ -46,52 +51,54 @@ export default function Header() {
     : "bg-transparent";
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBg}`}>
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between px-6 py-3">
-        {/* Logo */}
-        <Link href="/" className="flex items-center no-underline">
-          <Image
-            src="/images/logo/logo-white.png"
-            alt="랠리테니스 로고"
-            width={120}
-            height={40}
-            className="object-contain h-auto"
-            priority
-          />
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {menuItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`relative text-[15px] font-semibold px-4 py-2 transition-colors ${isScrolledOrSub ? "text-[#6B1040] hover:text-[#4A0A2E]" : "text-[#6B1040] hover:text-[#4A0A2E]"} nav-link-hover`}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className={`ml-4 border text-[15px] px-5 py-2 rounded-sm transition-all duration-300 font-semibold ${isScrolledOrSub ? "border-[#6B1040] text-[#6B1040] hover:bg-[#6B1040] hover:text-white" : "border-[#6B1040] text-[#6B1040] hover:bg-[#6B1040] hover:text-white"}`}
-          >
-            상담문의
+    <>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBg}`}>
+        <div className="max-w-[1200px] mx-auto flex items-center justify-between px-6 py-3">
+          {/* Logo */}
+          <Link href="/" className="flex items-center no-underline">
+            <Image
+              src="/images/logo/logo-white.png"
+              alt="랠리테니스 로고"
+              width={120}
+              height={40}
+              className="object-contain h-auto"
+              priority
+            />
           </Link>
-        </nav>
 
-        {/* Hamburger */}
-        <button
-          className="flex md:hidden flex-col gap-[5px] bg-transparent border-none cursor-pointer p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="메뉴 열기"
-        >
-          <span className={`block w-6 h-[2px] rounded transition-all duration-300 ${isScrolledOrSub ? "bg-[#6B1040]" : "bg-[#6B1040]"} ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-          <span className={`block w-6 h-[2px] rounded transition-all duration-300 ${isScrolledOrSub ? "bg-[#6B1040]" : "bg-[#6B1040]"} ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-[2px] rounded transition-all duration-300 ${isScrolledOrSub ? "bg-[#6B1040]" : "bg-[#6B1040]"} ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
-        </button>
-      </div>
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-1">
+            {menuItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative text-[15px] font-semibold px-4 py-2 transition-colors ${isScrolledOrSub ? "text-[#6B1040] hover:text-[#4A0A2E]" : "text-[#6B1040] hover:text-[#4A0A2E]"} nav-link-hover`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className={`ml-4 border text-[15px] px-5 py-2 rounded-sm transition-all duration-300 font-semibold ${isScrolledOrSub ? "border-[#6B1040] text-[#6B1040] hover:bg-[#6B1040] hover:text-white" : "border-[#6B1040] text-[#6B1040] hover:bg-[#6B1040] hover:text-white"}`}
+            >
+              상담문의
+            </Link>
+          </nav>
 
-      {/* Mobile overlay - 메뉴보다 먼저 렌더링 */}
+          {/* Hamburger */}
+          <button
+            className="flex md:hidden flex-col gap-[5px] bg-transparent border-none cursor-pointer p-2"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="메뉴 열기"
+          >
+            <span className={`block w-6 h-[2px] rounded transition-all duration-300 bg-[#6B1040] ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+            <span className={`block w-6 h-[2px] rounded transition-all duration-300 bg-[#6B1040] ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-[2px] rounded transition-all duration-300 bg-[#6B1040] ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile overlay - header 밖에서 독립적으로 렌더링 */}
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-black/50 md:hidden z-[55]"
@@ -99,10 +106,9 @@ export default function Header() {
         />
       )}
 
-      {/* Mobile slide-in menu */}
+      {/* Mobile slide-in menu - header 밖에서 독립적으로 렌더링 */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 bg-primary shadow-2xl transform transition-transform duration-300 md:hidden z-[60] ${mobileOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+        className={`fixed top-0 right-0 h-full w-72 bg-primary shadow-2xl transform transition-transform duration-300 md:hidden z-[60] ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="flex justify-end p-6">
           <button
@@ -133,6 +139,6 @@ export default function Header() {
           </Link>
         </nav>
       </div>
-    </header>
+    </>
   );
 }
