@@ -1,21 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
-import type { MenuItem } from "@/types";
-
-const footerLinks: MenuItem[] = [
-  { href: "/about", label: "아카데미 소개" },
-  { href: "/lessons", label: "레슨 프로그램" },
-  { href: "/coaches", label: "코치 소개" },
-  { href: "/facilities", label: "시설안내" },
-  { href: "/contact", label: "상담문의" },
-  { href: "/location", label: "위치안내" },
-];
 
 export default function Footer() {
   return (
     <footer className="bg-gray-300 text-gray-600 pt-10 pb-6 px-6 text-sm">
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -31,24 +20,6 @@ export default function Footer() {
               프리미엄 테니스 아카데미<br />
               체계적인 레슨과 최고의 시설
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-pink-400 text-xs font-semibold tracking-[0.15em] uppercase mb-4">
-              Quick Links
-            </h4>
-            <div className="flex flex-col gap-2">
-              {footerLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-500 hover:text-pink-400 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
           </div>
 
           {/* Contact */}
