@@ -28,7 +28,7 @@ export default function AboutPage() {
             {/* 인사말 */}
             <div className="text-center">
               <span className="text-pink-400 font-serif text-lg md:text-xl italic tracking-wide">
-                안녕하세요, 랠리테니스스튜디오입니다.
+                안녕하세요, <br />랠리테니스스튜디오입니다.
               </span>
               <div className="w-8 h-[2px] text-pink-400 mx-auto mt-4" />
             </div>
