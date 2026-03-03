@@ -27,6 +27,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // 모바일 메뉴 열리면 body 스크롤 잠금
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   const isHome = pathname === "/";
   const isScrolledOrSub = scrolled || !isHome;
   const headerBg = isScrolledOrSub
@@ -81,7 +93,7 @@ export default function Header() {
 
       {/* Mobile slide-in menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 bg-primary shadow-2xl transform transition-transform duration-300 md:hidden ${mobileOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 h-full w-72 bg-primary shadow-2xl transform transition-transform duration-300 md:hidden z-[60] ${mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         <div className="flex justify-end p-6">
@@ -110,7 +122,7 @@ export default function Header() {
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-black/50 md:hidden"
+          className="fixed inset-0 bg-black/50 md:hidden z-[55]"
           onClick={() => setMobileOpen(false)}
         />
       )}
