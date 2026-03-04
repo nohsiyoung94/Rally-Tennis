@@ -29,22 +29,24 @@ export default function LessonsPage() {
 
           {/* Header area */}
           <div className="relative z-10 mb-3 border-b-2 border-primary pb-3">
-            <div className="flex items-center gap-2 md:gap-3 mb-2">
-              <Image
-                src="/images/logo/logo-white.png"
-                alt="랠리테니스 로고"
-                width={360}
-                height={120}
-                className="object-contain w-auto h-[60px] md:h-[159px]"
-              />
-              <div>
-                <h2 className="text-lg md:text-3xl font-black text-primary tracking-tight">RALLY TENNIS</h2>
-                <p className="text-pink-600 font-semibold tracking-widest text-xs md:text-base">PROGRAM</p>
+            <div className="flex items-end justify-between gap-2 md:gap-3">
+              <div className="flex items-center gap-2 md:gap-3">
+                <Image
+                  src="/images/logo/logo-white.png"
+                  alt="랠리테니스 로고"
+                  width={360}
+                  height={120}
+                  className="object-contain w-auto h-[60px] md:h-[159px]"
+                />
+                <div>
+                  <h2 className="text-lg md:text-3xl font-black text-primary tracking-tight">RALLY TENNIS</h2>
+                  <p className="text-pink-600 font-semibold tracking-widest text-xs md:text-base">PROGRAM</p>
+                </div>
               </div>
+              <p className="text-[9px] md:text-sm font-medium text-rose-500 text-right whitespace-nowrap mb-1">
+                * 카드 결제시<br />부가세(VAT) 별도
+              </p>
             </div>
-            <p className="text-xs md:text-sm font-medium text-rose-500">
-              * 카드 결제시 부가세(VAT)는 별도입니다.
-            </p>
           </div>
 
           <div className="relative z-10 space-y-3">
