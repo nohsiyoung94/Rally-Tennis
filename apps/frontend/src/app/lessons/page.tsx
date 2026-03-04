@@ -44,7 +44,7 @@ export default function LessonsPage() {
                 </div>
               </div>
               <p className="text-[9px] md:text-sm font-medium text-rose-500 text-right whitespace-nowrap mb-1">
-                * 카드 결제시<br />부가세(VAT) 별도
+                * 카드 결제시 부가세(VAT) 별도
               </p>
             </div>
           </div>
