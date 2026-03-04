@@ -11,7 +11,6 @@ RUN npm ci --workspace=frontend
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/frontend/node_modules ./frontend/node_modules
 COPY package.json ./
 COPY frontend/ ./frontend/
 RUN npm run build --workspace=frontend
