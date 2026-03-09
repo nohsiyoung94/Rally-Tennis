@@ -99,7 +99,7 @@ export default function HomePage() {
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1920&q=80')" }}
         />
         {/* White overlay - 코트가 은은하게 비침 */}
-        <div className="absolute inset-0 bg-white/65" />
+        <div className="absolute inset-0 bg-white/50" />
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p className="text-[#800020] text-sm tracking-[0.3em] uppercase mb-6 font-medium">
